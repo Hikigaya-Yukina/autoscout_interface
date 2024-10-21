@@ -1,0 +1,81 @@
+cmake_minimum_required(VERSION 3.8)
+project(autoscout_interface)
+
+# find dependencies
+find_package(ament_cmake_auto REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+
+ament_auto_find_build_dependencies()
+
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+include_directories(
+  include
+)
+
+
+# set(msg_files
+#   "msg/ScoutStatus.msg"
+#   )
+
+# rosidl_generate_interfaces(${PROJECT_NAME}
+#   ${msg_files}
+#   DEPENDENCIES std_msgs geometry_msgs builtin_interfaces)
+
+# ament_export_dependencies(rosidl_default_runtime)
+# ament_export_dependencies(rosidl_default_generators)
+# ament_export_include_directories(include)
+
+# install(
+#     DIRECTORY launch 
+#     DESTINATION share/${PROJECT_NAME}/launch
+# )
+
+# install(
+#   DIRECTORY include/
+#   DESTINATION include/${PROJECT_NAME}
+# )
+
+# install(TARGETS
+#  Auto22scout_main
+#  DESTINATION lib/${PROJECT_NAME})
+
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+
+# ament_auto_add_executable(autoscout_interface 
+# src/Auto22scout.cpp
+# src/Auto22scout_main.cpp
+# )
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+
+endif()
+
+ament_auto_package(
+  INSTALL_TO_SHARE
+  launch
+)

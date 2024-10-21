@@ -1,0 +1,8 @@
+<launch>
+  <node pkg= "autoscout_interface"
+        exec= "Auto22scout_main"
+        name= "autoscout_interface"
+        namespace= "ATI_space"
+        output= "screen">
+  </node>
+</launch>
