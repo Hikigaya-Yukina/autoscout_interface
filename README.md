@@ -24,3 +24,14 @@
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select scout_base scout_msgs scout_description ugv_sdk autoscout_interface
 ```
 
+
+
+通讯节点已经彻底放入 vehicle_interface.launch.xml中了
+
+需要另外启动socut_ros2的节点
+
+```bash
+$ ros2 launch scout_base scout_base.launch.py
+```
+
+ugv_sdk只是单纯被引用的包
